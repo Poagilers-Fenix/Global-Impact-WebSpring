@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Global_Impact</title>
+<link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../static/css/site.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+<script href="../js/site.js"></script>
+</head>
+<body>
+	<header style="background-color: black;">
+		<nav
+			class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 m-0">
+			<div class="d-flex justify-content-between w-100 align-items-center"
+				style="height: 100px;">
+				<div class="m-0 p-0">
+					<a class="navbar-brand col-4" asp-controller="Home"
+						asp-action="Index"><img src="../img/weFeed.png" width="150" /></a>
+				</div>
+
+				<div
+					class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+					<ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
+						<li class="nav-item"><a class="nav-link text-dark"
+							style="font-size: 22px" asp-controller="Home" asp-action="Index">Página
+								Inicial</a></li>
+						<li class="nav-item"><a class="nav-link text-dark"
+							style="font-size: 22px" asp-controller="Home"
+							asp-action="Privacy">Doar Alimento</a></li>
+						<li class="nav-item"><a class="nav-link text-dark"
+							style="font-size: 22px" asp-controller="Home"
+							asp-action="Privacy">ONGs</a></li>
+					</ul>
+				</div>
+				<div class="m-0 p-0">
+
+					<a class="navbar-brand" asp-controller="Home" asp-action="Index"><img
+						src="../img/portaFechada.png" id="porta" width="50" /></a>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		<main role="main" class="pb-3"></main>
+	</div>
+
+	<footer class="border-top footer text-muted"
+		style="background-color: var(--dark-grey)">
+		<div class="container">
+			&copy; 2021 - Global_Impact - <a asp-area="" asp-controller="Home"
+				asp-action="Privacy">Privacy</a>
+		</div>
+	</footer>
+	<!-- Bootstrap core JavaScript
+================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet"
+		href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<link rel="stylesheet"
+		href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+		crossorigin="anonymous">
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>

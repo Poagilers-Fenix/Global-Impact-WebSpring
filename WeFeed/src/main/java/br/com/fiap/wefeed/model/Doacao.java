@@ -7,23 +7,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 
 @Data
 @Entity
 public class Doacao {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int doacaoId;
 	
-	@NotBlank
 	private Date dataDoacao;
 	
 	@ManyToOne
-	private Estabelecimento estabelecimento;
+	private User user;
 	
 	@ManyToOne
 	private Ong ong;
