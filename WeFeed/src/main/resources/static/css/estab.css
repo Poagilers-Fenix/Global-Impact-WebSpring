@@ -9,6 +9,10 @@
 body {
 }
 
+.form-group{
+	margin: 5px;
+}
+
 .b-radius {
     border-radius: 20px;
 }
@@ -17,6 +21,7 @@ body {
     font-weight: bold;
     font-size: 26px;
     color: var(--font-grey);
+    
 }
 
     .btn-link:hover {
@@ -46,19 +51,30 @@ body {
     width: 22%;
     border-radius: 10px;
 }
-    .btn-abled:focus, .btn-disabled:focus {
-        outline: none;
-        box-shadow: none;
-    }
+.btn-abled:focus, .btn-disabled:focus {
+    outline: none;
+    box-shadow: none;
+    color: white;
+}
 
 .btn-abled {
     background-color: var(--main-red);
-    color: #fff;
+    color: #ffffff;
+    font-size: 20px;
 }
     .btn-abled:hover {
-        color: #fff;
+        color: white;
         background-color: var(--dark-red);
     }
+.btn{
+	color:white;
+}
+    
+.mt-2{
+	margin-bottom: 20px;
+	font-size: 16px;
+}
+
 
 .btn-disabled {
     background-color: var(--light-grey);
