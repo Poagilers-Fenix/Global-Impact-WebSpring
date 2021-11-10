@@ -19,11 +19,13 @@ a {
     color: var(--main-red);
     font-weight: bold;
     margin: 1.5rem;
+    font-size: 24px;
 }
 
 .paragraph {
     text-indent: 5%;
     margin-left: 1.5rem;
+    font-size: 16px;
 }
 
 .btn-primary {

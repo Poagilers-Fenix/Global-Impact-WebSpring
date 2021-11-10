@@ -1,22 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Global_Impact</title>
-<link rel="stylesheet"
-	href="../lib/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../css/site.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap"
-	rel="stylesheet">
-	<link rel="stylesheet" href="../css/estab.css" />
-<script href="../js/site.js"></script>
-</head>
+<head th:include="_template :: head"></head>
 <body>
-	<header style="background-color: black;">
+
+	<header style="background-color: var(--header-bg)">
 		<nav
 			class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 m-0">
 			<div class="d-flex justify-content-between w-100 align-items-center"
@@ -28,14 +15,15 @@
 				<div
 					class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
 					<ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
+						<li class="nav-item"><a
+							class="nav-link text-dark another-page" style="font-size: 22px"
+							href="/">Página inicial</a></li>
 						<li class="nav-item"><a class="nav-link current-page"
-							style="font-size: 22px; color: var(- -main-red); font-weight: bold">PÃ¡gina
-								Inicial</a></li>
+							style="font-size: 22px; color: var(--main-red); font-weight: bold"
+							href="novaDoacao">Doar Alimento</a></li>
 						<li class="nav-item"><a
-							class="nav-link text-dark another-page" style="font-size: 22px">Doar
-								Alimento</a></li>
-						<li class="nav-item"><a
-							class="nav-link text-dark another-page" style="font-size: 22px">ONGs</a></li>
+							class="nav-link text-dark another-page" style="font-size: 22px"
+							href="ong">ONGs</a></li>
 					</ul>
 				</div>
 
@@ -47,14 +35,25 @@
 			</div>
 		</nav>
 	</header>
+	
+
+	<div style="width: 95vw; height: 62vh">
+        <main role="main" class="pb-3 h-100">
+			<h3>Página de Nova Doação</h3>
+           
+        </main>
+    </div>
 
 
-	<footer class="border-top footer text-muted"
-		style="background-color: var(--dark-grey)">
-		<div class="container">
-			&copy; 2021 - Global_Impact - <a>Privacy</a>
-		</div>
-	</footer>
+
+
+	<footer class="border-top footer text-muted box-shadow m-3" style="background-color: var(--medium-grey); height: 13vh; width: 98vw; border-radius: 20px;">
+        <div class="d-flex justify-content-center align-items-center w-100 h-100">
+            <img src="../img/weFeed.png" width="100" /> &copy; 2021 by Poágilers
+        </div>
+    </footer>
+
+
 	<!-- Bootstrap core JavaScript
 ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -79,6 +78,5 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
 		crossorigin="anonymous"></script>
-
 </body>
 </html>

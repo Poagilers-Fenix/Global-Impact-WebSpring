@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Global_Impact</title>
-<link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="../static/css/site.css" />
+<link rel="stylesheet"
+	href="../lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="../css/site.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap"
+	rel="stylesheet">
+	<link rel="stylesheet" href="../css/estab.css" />
 <script href="../js/site.js"></script>
 </head>
 <body>
@@ -18,41 +22,37 @@
 			<div class="d-flex justify-content-between w-100 align-items-center"
 				style="height: 100px;">
 				<div class="m-0 p-0">
-					<a class="navbar-brand col-4" asp-controller="Home"
-						asp-action="Index"><img src="../img/weFeed.png" width="150" /></a>
+					<a class="navbar-brand col-4"><img src="../img/weFeed.png"
+						width="150" /></a>
 				</div>
-
 				<div
 					class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
 					<ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
-						<li class="nav-item"><a class="nav-link text-dark"
-							style="font-size: 22px" asp-controller="Home" asp-action="Index">Página
+						<li class="nav-item"><a class="nav-link current-page"
+							style="font-size: 22px; color: var(- -main-red); font-weight: bold">Página
 								Inicial</a></li>
-						<li class="nav-item"><a class="nav-link text-dark"
-							style="font-size: 22px" asp-controller="Home"
-							asp-action="Privacy">Doar Alimento</a></li>
-						<li class="nav-item"><a class="nav-link text-dark"
-							style="font-size: 22px" asp-controller="Home"
-							asp-action="Privacy">ONGs</a></li>
+						<li class="nav-item"><a
+							class="nav-link text-dark another-page" style="font-size: 22px">Doar
+								Alimento</a></li>
+						<li class="nav-item"><a
+							class="nav-link text-dark another-page" style="font-size: 22px">ONGs</a></li>
 					</ul>
 				</div>
+
 				<div class="m-0 p-0">
 
-					<a class="navbar-brand" asp-controller="Home" asp-action="Index"><img
-						src="../img/portaFechada.png" id="porta" width="50" /></a>
+					<a class="navbar-brand"><img src="../img/portaFechada.png"
+						id="porta" width="50" /></a>
 				</div>
 			</div>
 		</nav>
 	</header>
-	<div class="container">
-		<main role="main" class="pb-3"></main>
-	</div>
+
 
 	<footer class="border-top footer text-muted"
 		style="background-color: var(--dark-grey)">
 		<div class="container">
-			&copy; 2021 - Global_Impact - <a asp-area="" asp-controller="Home"
-				asp-action="Privacy">Privacy</a>
+			&copy; 2021 - Global_Impact - <a>Privacy</a>
 		</div>
 	</footer>
 	<!-- Bootstrap core JavaScript
