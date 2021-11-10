@@ -18,6 +18,12 @@ public class Endereco {
 	@Size(min = 9, max = 9, message = "Exemplo: XXXXX-XXX")
 	private String cep;
 	
+	private String bairro;
+	
+	private String cidade;
+	
+	private String uf;
+		
 	private String logradouro;
 	
 	private String numero;

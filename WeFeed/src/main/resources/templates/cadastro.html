@@ -7,29 +7,114 @@
         <img src="../img/weFeed.png" width="200" class="m-5" />
     </a>
 
-<div class="w-50 mx-auto mt-2 mb-4 d-flex justify-content-around">
-    <a asp-action="login" asp-controller="home" class="btn-link">Login</a>
-    <a asp-action="cadastrar" class="btn-link current-page">Cadastro</a>
-</div>
-
-<div class="w-50 mx-auto mb-4 d-flex justify-content-around">
-    <a asp-action="cadastrar" class="btn-disabled btn" title="Em breve">Pessoa Física</a>
-    <a asp-action="cadastrar" class="btn-abled btn">Pessoa Jurídica</a>
-</div>
-
-<div class="d-flex align-items-center justify-content-center container">
-    <form class="w-75" asp-action="cadastrar">
-        <partial name="_FormEstab" /> <br />
-
-        <div class="d-flex flex-column justify-content-center text-center">
-            <button class="btn-abled btn m-auto">Finalizar</button>
-            <a asp-action="login" asp-controller="home" class="mt-2 link">
-                Já tem cadastro? <br />Clique para realizar o login
-            </a>
-        </div>
-    </form>
-</div>
+	<div class="w-50 mx-auto mt-2 mb-4 d-flex justify-content-around">
+	    <a asp-action="login" asp-controller="home" class="btn-link">Login</a>
+	    <a asp-action="cadastrar" class="btn-link current-page">Cadastro</a>
+	</div>
 	
+	<div class="w-50 mx-auto mb-4 d-flex justify-content-around">
+	    <a asp-action="cadastrar" style="font-size: 16px" class="btn-disabled btn" title="Em breve">Pessoa Física</a>
+	    <a asp-action="cadastrar" style="font-size: 16px" class="btn-abled btn">Pessoa Jurídica</a>
+	</div>
+	
+	<div class="d-flex align-items-center justify-content-center container">
+	    <form class="w-75" method="post">
+	        <div class="d-flex">
+	        <!-- SE COLOCAR A CLASS paragraph QUE ESTÁ NO SITE.CSS NA LINHA QUE TEM TELEFONE, E-MAIL... QUEBRA
+	        DEIXEI QUEBRADO CASO VC MEXA E SAIBA -->
+			    <div class="form-group col-8">
+			        <label  for="nome">Nome</label>
+			        <input class="form-control" name="nome" id="nome"/>
+			    </div>
+			
+			    <div class="form-group col-4">
+			        <label for="cnpj">Cnpj</label>
+			        <input class="form-control" name="cnpj" id="cnpj"/>
+			    </div>
+			</div>
+			
+			<div class="d-flex">
+			    <div class="form-group col-2">
+			        <label class="paragraph" for="telefone">Telefone</label>
+			        <input class="form-control" name="telefone" id="telefone"/>
+			    </div>
+			
+			    <div class="form-group col-4">
+			        <label class="paragraph" for="email">E-mail</label>
+			        <input class="form-control" name="email" id="email"/>
+			    </div>
+			
+			    <div class="form-group col-3">
+			        <label class="paragraph" for="Senha">Senha</label>
+			        <input class="form-control" name="senha" id="senha" />
+			    </div>
+			
+			    <div class="form-group col-3">
+			        <label class="paragraph" for="senha">Confirme a senha</label>
+			        <input class="form-control" name="senha" id="senha"/>
+			    </div>
+			</div>
+			
+			<br />
+			
+			<!-- VERIFICAR O FOR, NAME, ID  -->
+			<h4 class="ml-3">Endereço</h4>
+			
+			<div class="d-flex">
+			    <div class="form-group col-3">
+			        <label asp-for="Endereco.Cep">CEP</label>
+			        <input asp-for="Endereco.Cep" class="form-control" />
+			    </div>
+			
+			    <div class="form-group col-4">
+			        <label asp-for="Endereco.Bairro">Bairro</label>
+			        <input asp-for="Endereco.Bairro" class="form-control" />
+			    </div>
+			
+			    <div class="form-group col-4">
+			        <label asp-for="Endereco.Cidade">Cidade</label>
+			        <input asp-for="Endereco.Cidade" class="form-control" />
+			    </div>
+			
+			    <div class="form-group col-1">
+			        <label asp-for="Endereco.UF">UF</label>
+			        <input asp-for="Endereco.UF" class="form-control" />
+			    </div>
+			</div>
+			
+			<div class="d-flex">
+			    <div class="form-group col-6">
+			        <label asp-for="Endereco.Logradouro">Logradouro</label>
+			        <input asp-for="Endereco.Logradouro" class="form-control" />
+			    </div>
+			
+			    <div class="form-group col-2">
+			        <label asp-for="Endereco.Numero">Número</label>
+			        <input asp-for="Endereco.Numero" class="form-control" />
+			    </div>
+			
+			    <div class="form-group col-4">
+			        <label asp-for="Endereco.Complemento">Complemento	</label>
+			        <input asp-for="Endereco.Complemento" class="form-control" />
+			    </div>
+			</div>
+	        <br />
+	
+	        <div class="d-flex flex-column justify-content-center text-center">
+	            <button class="btn-abled btn m-auto">Finalizar</button>
+	            <a asp-action="login" asp-controller="home" class="mt-2 link">
+	                Já tem cadastro? <br />Clique para realizar o login
+	            </a>
+	        </div>
+	    </form>
+	</div>
+	
+			
+           
+          <!--   <div style="width: 95vw; height: 62vh">
+        <main role="main" class="pb-3 h-100">
+        </main>
+    </div>-->
 
 
 		<!-- Bootstrap core JavaScript
