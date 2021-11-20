@@ -1,14 +1,15 @@
 package br.com.fiap.wefeed.model;
 
-import java.util.Date;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Data;
 
@@ -16,22 +17,21 @@ import lombok.Data;
 @Entity
 public class DoacaoAlimento {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int doacaoId;
-	
-	private Date dataValidade;
-	
+	private Long id;
+		
+	@NotBlank(message="Informe uma quantidade.")
 	private String quantidade;
 	
 	private String foto;
 	
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Doacao doacao;
 	
-	@ManyToOne
-	private Alimento alimento;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Item item;
 	
 	
 	

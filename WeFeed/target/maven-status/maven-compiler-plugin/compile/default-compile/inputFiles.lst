@@ -1,2 +1,22 @@
-D:\Área de Trabalho\Kaue\2TDSG\DigitalBusiness\2ºSemestre\WeFeed\src\main\java\br\com\fiap\wefeed\WeFeedApplication.java
-D:\Área de Trabalho\Kaue\2TDSG\DigitalBusiness\2ºSemestre\WeFeed\src\main\java\br\com\fiap\wefeed\controller\LoginController.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\model\Doacao.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\model\Login.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\controller\EstabController.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\repository\EnderecoRepository.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\repository\ItemRepository.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\controller\LoginController.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\model\Estado.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\model\Ong.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\config\SecurityConfiguration.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\controller\HomeController.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\controller\NovaDoacaoController.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\model\Estabelecimento.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\repository\NovaDoacaoRepository.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\model\Endereco.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\service\AuthenticationService.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\WeFeedApplication.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\repository\OngRepository.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\model\Item.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\model\DoacaoAlimento.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\controller\ItemController.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\controller\OngController.java
+D:\Documentos\2TDSG_ImpactSolution\WeFeed\src\main\java\br\com\fiap\wefeed\repository\EstabRepository.java

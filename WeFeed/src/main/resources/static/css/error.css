@@ -1,0 +1,30 @@
+main.error {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #B7DBD2;;
+}
+
+
+
+main.error .card{
+	display:flex;
+	flex-direction:column;
+	align-items: center;
+	width: 500px;
+	padding-bottom: 1rem;
+	
+}
+
+
+main.error .card h2{
+	font-size: 1.8rem;
+	color: #CC5353;
+}
+
+main.error .card p{
+	font-size: 1.2rem;
+	margin: 2rem 0 3rem 0;
+}

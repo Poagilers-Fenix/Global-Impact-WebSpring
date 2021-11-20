@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:include="_template :: head">
+
+</head>
+<body>
+
+	<header style="background-color: var(--header-bg)">
+		<nav
+			class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 m-0">
+			<div class="d-flex justify-content-between w-100 align-items-center"
+				style="height: 100px;">
+				<div class="m-0 p-0" >
+					<a class="navbar-brand col-4"><img src="../img/weFeed.png"
+						width="150" /></a>
+				</div>
+				<div
+					class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+					<ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
+						<li class="nav-item"><a href="/"
+							class="nav-link text-dark another-page" style="font-size: 22px">Página
+								Inicial</a></li>
+						<li class="nav-item"><a href="/novaDoacao"
+							class="nav-link text-dark another-page" style="font-size: 22px">Doar
+								Alimento </a></li>
+						<li class="nav-item"><a href="/ong"
+							class="nav-link current-page"
+							style="font-size: 22px; color: var(--main-red); font-weight: bold">ONGs</a></li>
+					</ul>
+				</div>
+
+				<div class="m-0 p-0">
+
+					<a class="navbar-brand" sec:authorize="isAuthenticated()" href="/logout" title="Sair"><img src="../img/portaFechada.png"
+						id="porta" width="50" /></a>
+						
+					<div class="d-flex flex-column justify-content-center" style="margin: 15px;" sec:authorize="isAnonymous()">
+                            <a class="btn btn-login" href="login" style=" background-color:  var(--light-red);">Login</a>
+                            <a class="link" href="estabelecimento/new">Realizar cadastro</a>
+                    </div>
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+	<div class="alert" th:if="${message != null}" th:text="${message}"></div>
+
+	<div style="width: 100vw; height: 62vh; display:flex; justify-content: center;">
+		<main role="main" class="pb-3 h-100">
+			<div 
+				class="pre-scrollable d-flex box-shadow flex-column align-items-center w-100 col-12 pb-5"
+				style="background-color: #F8F8F8; padding-left: 5%; padding-right: 5%; ">
+				<div class="w-100">
+					<p
+						class="d-flex justify-content-center font-weight-bold mb-0 pt-4 pb-5 h1"
+						style="color: var(--light-red)" th:text="${ong.nome}"></p>
+				</div>
+				<div class="d-flex flex-row w-100">
+					<div>
+						<img th:src="${ong.foto}" 
+                 style="object-fit: fill; height: 130px; width: 150px; border-radius: 30px; margin-right: 30px;" />
+					</div>
+					<div
+						class="d-flex justify-content-center align-items-center ml-3 pb-0">
+						<p class="h4" th:text="${ong.descricao}"></p>
+					</div>
+				</div>
+				<div class="d-flex justify-content-center flex-row w-100 py-5">
+					<p class="h2">Informações de contato e endereço</p>
+				</div>
+				<div class="w-100 d-flex flex-row justify-content-between">
+					<div>
+						<p class="h4" th:text="${ong.endereco.cidade}" ></p>
+						<p class="h4" th:text="${ong.endereco.logradouro}"></p>
+						<p class="h4" th:text="${ong.email}">Email: </p>
+						<p class="h4 mb-0" th:text="${ong.telefone}">Telefone: </p>
+					</div>
+					<div class="d-flex flex-column justify-content-around ml-5" style="margin-left: 50px;">
+						<a href="/novaDoacao"
+							class="btn btn-block text-white"
+							style="background-color: var(--light-red);">Faça uma doação
+							para essa ong</a>
+					</div>
+				</div>
+			</div>
+
+		</main>
+	</div>
+
+
+
+
+
+
+	<footer class="border-top footer text-muted box-shadow m-3"
+		style="background-color: var(--medium-grey); height: 13vh; width: 98vw; border-radius: 20px; position: fixed; margin-top: 30px;">
+		<div
+			class="d-flex justify-content-center align-items-center w-100 h-100">
+			<img src="../img/weFeed.png" width="100" /> &copy; 2021 by Poágilers
+		</div>
+	</footer>
+
+
+	<!-- Bootstrap core JavaScript
+================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+		crossorigin="anonymous"></script>
+</body>
+</html>
+

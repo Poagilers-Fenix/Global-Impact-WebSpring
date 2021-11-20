@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html 
+	xmlns:th="http://thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:include="_template :: head"></head>
 <body>
 
@@ -9,7 +11,7 @@
 			<div class="d-flex justify-content-between w-100 align-items-center"
 				style="height: 100px;">
 				<div class="m-0 p-0">
-					<a class="navbar-brand col-4"><img src="../img/weFeed.png"
+					<a class="navbar-brand col-4" ><img src="../img/weFeed.png"
 						width="150" /></a>
 				</div>
 				<div
@@ -17,11 +19,11 @@
 					<ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
 						<li class="nav-item"><a href="/"
 							class="nav-link text-dark another-page" style="font-size: 22px"
-							>P�gina Inicial</a></li>
-						<li class="nav-item"><a href="novaDoacao"
+							>Página Inicial</a></li>
+						<li class="nav-item"><a href="/novaDoacao"
 							class="nav-link text-dark another-page" style="font-size: 22px "
 							>Doar Alimento  </a></li>
-						<li class="nav-item"><a href="ong"  class="nav-link current-page"
+						<li class="nav-item"><a href="/ong"  class="nav-link current-page"
 							style="font-size: 22px; color: var(--main-red); font-weight: bold"
 							>ONGs</a></li>
 					</ul>
@@ -29,30 +31,88 @@
 
 				<div class="m-0 p-0">
 
-					<a class="navbar-brand"><img src="../img/portaFechada.png"
+					<a class="navbar-brand" sec:authorize="isAuthenticated()" href="/logout" title="Sair"><img src="../img/portaFechada.png"
 						id="porta" width="50" /></a>
+						
+					<div class="d-flex flex-column justify-content-center" style="margin: 15px;" sec:authorize="isAnonymous()">
+                            <a class="btn btn-login" href="login" style=" background-color:  var(--light-red);">Login</a>
+                            <a class="link" href="estabelecimento/new">Realizar cadastro</a>
+                    </div>
 				</div>
 			</div>
 		</nav>
 	</header>
 	
+	<div class="alert" th:if="${message != null}" th:text="${message}"></div>
+
 	<div style="width: 95vw; height: 62vh">
-        <main role="main" class="pb-3 h-100">
-			<div class="main">
-				<h3>Veja as ONGs cadastradas</h3>
+		<main role="main" class="pb-3 h-100">
+			<div class="d-flex box-shadow flex-column"
+				style="height: 30vw; width: 98vw; margin: 1vw; border-radius: 30px; background-color: #F8F8F8; overflow: scroll; overflow-x: hidden;">
+				<div class="d-flex flex-row w-100"
+					style="padding-left: 10%; padding-top: 2.5%; padding-bottom: 2.5%;">
+					<div class="d-flex flex-column w-50">
+						<h2 class="font-weight-bold d-flex flex-row m-0"
+							style="color: var(--light-red)">Veja as ONGs cadastradas</h2>
+						<p style="font-size: x-large; margin-top: 1%; padding: 5px;">Você pode ver
+							mais informações sobre as ONGs clicando em saiba mais.</p>
+					</div>			
+					<div class="d-flex justify-content-center align-items-center col-5">
+						<div class="d-flex justify-content-between align-items-center col-lg-10 ml-4">
+			                <form class="d-flex col-6" th:action="@{/ong/buscarNome}" >
+			                    <input name="nome" class="form-control" id="pesquisa" placeholder="Procurar ong por nome" style="border-radius: 10px 0 0 10px;" />
+			                    <button type="submit" class="btn btn-sm p-0 col-3" style="background-color:  var(--light-red); border-radius: 0 10px 10px 0; ">
+			                        <span class="text-white">
+			                            Buscar
+			                        </span>
+			                    </button>
+			                </form>
+			            </div>
+            			<a role="button" class="btn text-white my-4 mr-5" style="background-color: var(--main-red);" href="ong/new">Cadastre sua ong!</a>
+        			</div>
+				</div>
+				<div class="pre-scrollable my-2 mx-5  flex-wrap" style="display: flex; flex-direction: row; justify-content: center;" >
+					<div 
+						class="d-flex justify-content-around align-items-center flex-wrap" th:each="ong : ${ongs}" style="display: flex; flex-direction: row;">
+						 
+						<div class="d-flex box-shadow flex-column my-2"
+							style="height: 30vh; width: 27vw; border-radius: 30px; margin-right: 50px; display: flex; flex-direction: row;">
+							<div class="d-flex flex-row" style="height: 100%; width: 100%; display: flex; flex-direction: row;">
+								<div style="width: 50%;">
+									<img  th:src="${ong.foto}" style="width: 100%; height: 100%; border-radius: 30px 0 0 30px" />
+								</div>
+								<div style="width: 50%;" class="d-flex flex-column" >
+									<h5 class="d-flex justify-content-center mt-2"
+										style="word-wrap: break-word" th:text="${ong.nome}"></h5>
+									<p
+										style="word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;"
+										class="mx-3" th:text="${ong.descricao}"></p>
+									<p class="d-flex justify-content-center" th:text="${ong.telefone}"></p>
+									<a style="background-color: var(--main-red);" th:href="${'ong/' + ong.id}"
+										class="d-flex justify-content-center pa-2 text-white">Saiba
+										mais sobre essa ong</a>
+								</div>
+							</div>
+						</div>
+					
+					</div>
+				</div>
 			</div>
-            
-        </main>
-    </div>
+
+			
+			
+		</main>
+	</div>
 
 
 
 
 
 
-	<footer class="border-top footer text-muted box-shadow m-3" style="background-color: var(--medium-grey); height: 13vh; width: 98vw; border-radius: 20px;">
+	<footer class="border-top footer text-muted box-shadow m-3" style="background-color: var(--medium-grey); height: 13vh;
+			 width: 98vw; border-radius: 20px; position: static;">
         <div class="d-flex justify-content-center align-items-center w-100 h-100">
-            <img src="../img/weFeed.png" width="100" /> &copy; 2021 by Po�gilers
+            <img src="../img/weFeed.png" width="100" /> &copy; 2021 by Poágilers
         </div>
     </footer>
 
@@ -65,21 +125,10 @@
 
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-	<link rel="stylesheet"
-		href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-	<link rel="stylesheet"
-		href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
-		rel="stylesheet"
-		integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
-		crossorigin="anonymous">
-
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
 		crossorigin="anonymous"></script>
 </body>
 </html>
+

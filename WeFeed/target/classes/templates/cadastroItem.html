@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+	xmlns:th="http://thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:include="_template :: head"></head>
+<body>
+
+	<header style="background-color: var(--header-bg)">
+		<nav
+			class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 m-0">
+			<div class="d-flex justify-content-between w-100 align-items-center"
+				style="height: 100px;">
+				<div class="m-0 p-0">
+					<a class="navbar-brand col-4"><img src="../img/weFeed.png"
+						width="150" /></a>
+				</div>
+				<div
+					class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+					<ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
+						<li class="nav-item"><a href="/"
+							class="nav-link text-dark another-page" style="font-size: 22px">Página
+								Inicial</a></li>
+						<li class="nav-item"><a href="/novaDoacao"
+							class="nav-link current-page"
+							style="font-size: 22px; color: var(--main-red); font-weight: bold">Doar
+								Alimento </a></li>
+						<li class="nav-item"><a href="/ong"
+							class="nav-link text-dark another-page" style="font-size: 22px;">ONGs</a></li>
+					</ul>
+				</div>
+
+				<div class="m-0 p-0">
+
+					<a class="navbar-brand" sec:authorize="isAuthenticated()" href="/logout" title="Sair"><img src="../img/portaFechada.png"
+						id="porta" width="50" /></a>
+						
+					<div class="d-flex flex-column justify-content-center" style="margin: 15px;" sec:authorize="isAnonymous()">
+                            <a class="btn btn-login" href="login" style=" background-color:  var(--light-red);">Login</a>
+                            <a class="link" href="estabelecimento/new">Realizar cadastro</a>
+                    </div>
+						
+					
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+	<div class="alert" th:if="${message != null}" th:text="${message}"></div>
+
+	<div style="width: 95vw; height: 62vh">
+		<main role="main" class="pb-3 h-100">
+			<div class="b-radius box-shadow h-100 w-100 d-flex">
+				<div class="d-flex flex-column align-items-center col-12">
+					<h4 class="title m-4">Cadastrar Item</h4>
+
+					
+
+					<form  th:action="@{/item}" method="post" th:object="${item}" class="col-4">
+						<div class="form-group">
+							<div class="d-flex justify-content-center">
+								<label for="nome">Nome</label>
+							</div>
+							<div class="d-flex flex-column">
+								<input  name="nome" id="nome" class="form-control mb-2" > 
+								<span class="text-danger mb-3" style="text-align: center"  th:errors="*{nome}"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="d-flex justify-content-center">
+								<label for="foto">Foto</label>
+							</div>
+							<div class="d-flex flex-column">
+								<input name="foto" id="foto" class="form-control mb-2"> 
+								<span class="text-danger mb-3" style="text-align: center"></span>
+							</div>
+						</div>
+						
+						<div style="display: flex; flex-direction: row; justify-content: center;">
+						<div class="d-flex justify-content-center">
+							<button type="submit" style="background-color: var(--light-red); margin-right: 5px;" class="btn btn-outline text-cn">Adicionar</button>
+						</div>
+						<div class="d-flex justify-content-center">
+							<a type="button" href="/novaDoacao" style="background-color: steelblue;" class="btn btn-outline text-cn">Voltar</a>
+						</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+
+		</main>
+	</div>
+
+
+
+
+
+
+	<footer class="border-top footer text-muted box-shadow m-3"
+		style="background-color: var(--medium-grey); height: 13vh; width: 98vw; border-radius: 20px;">
+		<div
+			class="d-flex justify-content-center align-items-center w-100 h-100">
+			<img src="../img/weFeed.png" width="100" /> &copy; 2021 by Poágilers
+		</div>
+	</footer>
+
+
+	<!-- Bootstrap core JavaScript
+================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" ></script>
+
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+		crossorigin="anonymous"></script>
+</body>
+</html>

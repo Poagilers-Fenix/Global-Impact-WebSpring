@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br"
+	xmlns:th="http://thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:include="_template :: head"></head>
 <body>
 
@@ -9,47 +11,143 @@
 			<div class="d-flex justify-content-between w-100 align-items-center"
 				style="height: 100px;">
 				<div class="m-0 p-0">
-					<a class="navbar-brand col-4"><img src="../img/weFeed.png"
+					<a class="navbar-brand col-4" ><img src="../img/weFeed.png"
 						width="150" /></a>
 				</div>
 				<div
 					class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
 					<ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
-						<li class="nav-item"><a
+						<li class="nav-item"><a href="/" 
 							class="nav-link text-dark another-page" style="font-size: 22px"
-							href="/">P·gina inicial</a></li>
-						<li class="nav-item"><a class="nav-link current-page"
-							style="font-size: 22px; color: var(--main-red); font-weight: bold"
-							href="novaDoacao">Doar Alimento</a></li>
-						<li class="nav-item"><a
-							class="nav-link text-dark another-page" style="font-size: 22px"
-							href="ong">ONGs</a></li>
+							>P√°gina Inicial</a></li>
+						<li class="nav-item"><a href="/novaDoacao"
+							class="nav-link current-page" style="font-size: 22px;  color: var(--main-red); font-weight: bold"
+							>Doar Alimento  </a></li>
+						<li class="nav-item"><a href="/ong"  class="nav-link text-dark another-page"
+							style="font-size: 22px;"
+							>ONGs</a></li>
 					</ul>
 				</div>
 
 				<div class="m-0 p-0">
 
-					<a class="navbar-brand"><img src="../img/portaFechada.png"
+					<a class="navbar-brand" sec:authorize="isAuthenticated()" href="/logout" title="Sair"><img src="../img/portaFechada.png"
 						id="porta" width="50" /></a>
+						
+					<div class="d-flex flex-column justify-content-center" style="margin: 15px;" sec:authorize="isAnonymous()">
+                            <a class="btn btn-login" href="login" style=" background-color:  var(--light-red);">Login</a>
+                            <a class="link" href="estabelecimento/new">Realizar cadastro</a>
+                    </div>
 				</div>
 			</div>
 		</nav>
 	</header>
 	
+	<div class="alert" th:if="${message != null}" th:text="${message}"></div>
 
-	<div style="width: 95vw; height: 62vh">
-        <main role="main" class="pb-3 h-100">
-			<h3>P·gina de Nova DoaÁ„o</h3>
-           
-        </main>
+	<!-- <div style="width: 95vw; height: 62vh">
+		<main role="main" class="pb-3 h-100">-->
+			<div class="b-radius box-shadow h-100 w-100 d-flex" >
+    <div class="h-100 col-8">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="title m-5" style="height: 10%">Doa√ß√£o</h3>
+            
+            <div class="d-flex justify-content-between align-items-center col-lg-10 ml-4">
+                <a href="/item/new" class="btn" style="background-color:  var(--light-red);">Adicionar item</a>
+                <form class="d-flex col-6" th:action="@{/item/buscarNome}" >
+                    <input name="nome" class="form-control" id="pesquisa" placeholder="Procurar item por nome" style="border-radius: 10px 0 0 10px;" />
+                    <button type="submit" class="btn btn-sm p-0 col-3" style="background-color:  var(--light-red); border-radius: 0 10px 10px 0; ">
+                        <span class="text-white">
+                            Buscar
+                        </span>
+                    </button>
+                </form>
+            </div>
+
+            
+        </div>
+        
+        <div class="ml-4 pre-scrollable" style="height: 350px; overflow: scroll; overflow-x: hidden;">
+            <div class="d-flex flex-wrap">
+                    <form th:action="@{/novaDoacao/adicionar}" th:object="${item}" method="post" class="m-2 box b-radius m-2 item-card" style="width: 100%; display: flex; flex-direction: row; flex-wrap: wrap;"  >
+                    <div class="box-shadow b-radius m-2 item-card" style="width: 45%; padding:3px;" th:each="item : ${itens}">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="paragraph m-3" th:text="${item.nome}"></h6>
+                            
+                            <input name="${item.nome}" type="checkbox" class="my-auto mr-3"  id="checkTrue"/>
+                            
+                        </div>
+							<div class="d-flex">
+								<p class="col-2.5 mt-4" style="font-size: 1rem;">Quantidade
+									&nbsp;</p>
+								<input class="col-2 mt-4 form-control" name="quantidade"
+									style="width: 200px; height: 30px; margin-right: 5px;" />
+								<div class="d-flex flex-column col-4 mb-4 align-items-center">
+									<label style="font-size: .8rem;">un/Kg/L</label> <select id="unidade"
+										class="col-8 form-control" style="height: 35px; width: 100px;">
+										<option disabled class="form-control">--Selecione
+											uma unidade de medida--</option>
+										<option name="un"  class="form-control" >un</option>
+										<option name="kg" class="form-control">Kg</option>
+										<option name="l" class="form-control">L</option>
+									</select>
+								</div>
+							</div>
+							<div>
+
+                        </div>
+                    </div>
+                     
+                </form>
+            </div>
+        </div>
     </div>
+    <div class="col-3 box-shadow b-radius m-auto" style="background-color: var(--light-grey); height: 400px; margin-top: 5%; overflow: scroll; overflow-x: hidden;">
+        <h5 class="text-danger d-flex justify-content-center mt-3">Ongs</h5>
+        <div 
+						class="d-flex justify-content-around align-items-center flex-wrap" th:each="ong : ${ongs}" style="display: flex; flex-direction: row; ">
+						 
+						<div class="d-flex box-shadow flex-column my-3"
+							style="height: 25vh; width: 27vw; border-radius: 30px; margin: 10px; display: flex; flex-direction: row;">
+							<div class="d-flex flex-row" style="height: 100%; width: 100%; display: flex; flex-direction: row;">
+								<div style="width: 50%;">
+									<img  th:src="${ong.foto}" style="width: 100%; height: 100%; border-radius: 30px 0 0 30px" />
+								</div>
+								<div style="width: 50%; height: 50%" class="d-flex flex-column" >
+								<div class="d-flex justify-content-end">
+                            <form href="/novaDoacao" method="post">
+                                <a href="/error" class="btn  btn-sm font-weight-bold" style="background-color:  var(--light-red);">Selecionar</a>
+                            </form>
+                        </div>
+									<h5 class="d-flex justify-content-center mt-2"
+										style="word-wrap: break-word" th:text="${ong.nome}"></h5>
+									<p
+										style="word-wrap: break-word; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;"
+										class="mx-3" th:text="${ong.descricao}"></p>
+									<p class="d-flex justify-content-center" th:text="${ong.telefone}"></p>
+									<a style="background-color: var(--main-red);"  th:href="${'ong/' + ong.id}"
+										class="d-flex justify-content-center pa-2 text-white">Saiba
+										mais</a>
+								</div>
+							</div>
+						</div>
+					
+					</div>
+    </div>
+</div>
+
+	<!-- </main>
+	</div>-->
 
 
 
 
-	<footer class="border-top footer text-muted box-shadow m-3" style="background-color: var(--medium-grey); height: 13vh; width: 98vw; border-radius: 20px;">
+
+
+	<footer class="border-top footer text-muted box-shadow m-3" style="background-color: var(--medium-grey);
+				 height: 13vh; width: 98vw; border-radius: 20px; position: static; ">
         <div class="d-flex justify-content-center align-items-center w-100 h-100">
-            <img src="../img/weFeed.png" width="100" /> &copy; 2021 by Po·gilers
+            <img src="../img/weFeed.png" width="100" /> &copy; 2021 by Po√°gilers
         </div>
     </footer>
 
@@ -62,18 +160,6 @@
 
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-	<link rel="stylesheet"
-		href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-	<link rel="stylesheet"
-		href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
-		rel="stylesheet"
-		integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
-		crossorigin="anonymous">
-
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"

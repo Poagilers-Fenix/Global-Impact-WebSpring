@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br"
+	xmlns:th="http://thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:include="_template :: head"></head>
 <body>
 
@@ -17,20 +19,26 @@
 					<ul class="navbar-nav flex-grow-1 d-flex justify-content-end mr-5">
 						<li class="nav-item"><a class="nav-link current-page"
 							style="font-size: 22px; color: var(--main-red); font-weight: bold" 
-							href="/">Página Inicial</a></li>
-						<li class="nav-item"><a href="novaDoacao"
+							href="/">PÃ¡gina Inicial</a></li>
+						<li class="nav-item"><a href="/novaDoacao"
 							class="nav-link text-dark another-page" style="font-size: 22px"
 							>Doar Alimento</a></li>
-						<li class="nav-item"><a href="ong"
+						<li class="nav-item"><a href="/ong"
 							class="nav-link text-dark another-page" style="font-size: 22px"
 							>ONGs</a></li>
 					</ul>
 				</div>
 
-				<div class="m-0 p-0">
+				<div class="m-0 p-0" >				
+				
 
-					<a class="navbar-brand"><img src="../img/portaFechada.png"
+					<a class="navbar-brand" sec:authorize="isAuthenticated()" href="/logout" title="Sair"><img src="../img/portaFechada.png"
 						id="porta" width="50" /></a>
+						
+					<div class="d-flex flex-column justify-content-center" style="margin: 15px;" sec:authorize="isAnonymous()">
+                            <a class="btn btn-login" href="login" style=" background-color:  var(--light-red);">Login</a>
+                            <a class="link" href="estabelecimento/new">Realizar cadastro</a>
+                    </div>
 				</div>
 			</div>
 		</nav>
@@ -47,7 +55,7 @@
 			            <div class="col-9">
 			                <h4 class="title m-4">Bem-vindo(a)!</h4>
 			                <p class="paragraph">
-			                    O weFeed foi feito para conectar aqueles que querem evitar o descarte de comida e os que não tÃªm
+			                    O weFeed foi feito para conectar aqueles que querem evitar o descarte de comida e os que nÃ£o tÃªm
 			                    alimento disponÃ­vel. Ã‰ a forma de acabar com o desperdÃ­cio e com a fome em apenas uma soluÃ§Ã£o.
 			                </p>
 			            </div>
@@ -58,12 +66,12 @@
 			
 			        <div>
 			            <div class="col-12">
-			                <a href="novaDoacao.html" class="d-flex align-items-center" style="text-decoration: none;">
-			                    <h4 class="title">Doaçõess</h4>
+			                <a href="novaDoacao" class="d-flex align-items-center" style="text-decoration: none;">
+			                    <h4 class="title">DoaÃ§Ãµes</h4>
 			                    <img src="../img/add-button.png" width="40" />
 			                </a>
 			                <p class="paragraph">
-			                    Aqui você pode realizar doações para organizzções sem fins lucrativos que aceitem receber 
+			                    Aqui vocÃª pode realizar doaÃ§Ãµes para organizaÃ§Ãµes sem fins lucrativos que aceitem receber 
 			                    alimentos, evitando assim o desperdÃ­cio e ajudando quem precisa.
 			                </p>
 			            </div>
@@ -71,7 +79,7 @@
 			    </div>
 			
 			    <div class="box-shadow col-3 m-3 h-100 b-radius">
-			        <h5 class="title d-flex justify-content-center">Informações</h5>
+			        <h5 class="title d-flex justify-content-center">InformaÃ§Ãµes</h5>
 			        <!-- @*<div>
 			            @foreach (var site in ViewBag.titles)
 			            {
@@ -95,9 +103,9 @@
 
 
 
-	<footer class="border-top footer text-muted box-shadow m-3" style="background-color: var(--medium-grey); height: 13vh; width: 98vw; border-radius: 20px;">
+	<footer class="border-top footer text-muted box-shadow m-3" style="background-color: var(--medium-grey); height: 13vh; width: 98vw; border-radius: 20px; position: fixed">
         <div class="d-flex justify-content-center align-items-center w-100 h-100">
-            <img src="../img/weFeed.png" width="100" /> &copy; 2021 by Poágilers
+            <img src="../img/weFeed.png" width="100" /> &copy; 2021 by PoÃ¡gilers
         </div>
     </footer>
 
@@ -106,25 +114,18 @@
 ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" > </script>
 
 		<script
 			src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+			
+			<script type="text/javascript" th:src="@{../js/site.js}"> </script>
 
-		<link rel="stylesheet"
-			href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-		<link rel="stylesheet"
-			href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
-			crossorigin="anonymous">
 
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
-			crossorigin="anonymous"></script>
+			crossorigin="anonymous" > </script>
 </body>
 </html>

@@ -1,35 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:include="_template :: head"></head>
 <body>
 	<a href="/"> <img src="../img/weFeed.png" width="200" class="m-5" />
 	</a>
+	
+	<div style="color: red; text-align: center; font-size: 32px;" th:if="${param.error}">Login inválido</div>
 
 	<div class="w-50 mx-auto mt-2 mb-4 d-flex justify-content-around">
 		<a href="login" class="btn-link current-page">Login</a> <a
-			href="cadastro" class="btn-link">Cadastro</a>
+			href="estabelecimento/new" class="btn-link">Cadastro</a>
 	</div>
 
 	<div class="w-50 mx-auto mb-4 d-flex justify-content-around">
 		<a class="btn-disabled btn" title="Em breve">Pessoa Física</a> <a
-			href="cadastro" class="btn-abled btn">Pessoa Jurídica</a>
+			href="/login" class="btn-abled btn">Pessoa Jurídica</a>
 	</div>
 
 	<div class="d-flex align-items-center justify-content-center container">
-		<form class="w-50" asp-action="login" asp-controller="home">
+		<form class="w-50" th:action="@{/login}" method="post">
 			<div class="form-group">
-				<label for="email">E-mail</label> <input name="email" id="email"
+				<label for="username">E-mail</label> <input name="username" id="username" type="email"
 					class="form-control" />
 			</div>
 
 			<div class="form-group">
-				<label for="senha">Senha</label> <input name="senha" id="senha"
+				<label for="password">Senha</label> <input name="password" id="password" type="password"
 					class="form-control" />
 			</div>
 
 			<div class="d-flex flex-column justify-content-center text-center" style="margin-top: 30px;">
 				<button class="btn-abled btn m-auto" >Entrar</button>
-				<a href="cadastro" class="mt-2 link"> Ainda não tem cadastro? <br />Realize
+				<a href="/estabelecimento/new" class="mt-2 link"> Ainda não tem cadastro? <br />Realize
 					clicando aqui
 				</a>
 			</div>
@@ -40,7 +43,7 @@
 ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

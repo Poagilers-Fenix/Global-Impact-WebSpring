@@ -1,8 +1,8 @@
 package br.com.fiap.wefeed.model;
 
-import java.util.Date;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,15 +13,14 @@ import lombok.Data;
 @Data
 @Entity
 public class Doacao {
+	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int doacaoId;
+	private Long id;
+		
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Estabelecimento estab;
 	
-	private Date dataDoacao;
-	
-	@ManyToOne
-	private User user;
-	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Ong ong;
 	
 }
